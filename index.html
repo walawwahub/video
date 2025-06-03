@@ -148,7 +148,7 @@
     <!-- Popup Modal for Ad -->
     <div class="popup" id="popupAd">
         <div class="popup-content">
-            <h2>Watch this short ad!</h2>
+            <h2>Watch this short ad before watching video!</h2>
             <p>Click the button below to continue to the video.</p>
             <button id="redirectToAdBtn">Continue to Ad</button>
         </div>
@@ -165,25 +165,11 @@
 
         // Sample video data (image, video URL, and title)
         const videoData = [
-            { image: 'video1.jpg', link: 'video1.mp4', title: 'Video 1' },
-            { image: 'video2.jpg', link: 'video2.mp4', title: 'Video 2' },
-            { image: 'video3.jpg', link: 'video3.mp4', title: 'Video 3' },
-            { image: 'video4.jpg', link: 'video4.mp4', title: 'Video 4' },
-            { image: 'video5.jpg', link: 'video5.mp4', title: 'Video 5' },
-            { image: 'video6.jpg', link: 'video6.mp4', title: 'Video 6' },
-            { image: 'video7.jpg', link: 'video7.mp4', title: 'Video 7' },
-            { image: 'video8.jpg', link: 'video8.mp4', title: 'Video 8' },
-            { image: 'video9.jpg', link: 'video9.mp4', title: 'Video 9' },
-            { image: 'video10.jpg', link: 'video10.mp4', title: 'Video 10' },
-            { image: 'video11.jpg', link: 'video11.mp4', title: 'Video 11' },
-            { image: 'video12.jpg', link: 'video12.mp4', title: 'Video 12' },
-            { image: 'video13.jpg', link: 'video13.mp4', title: 'Video 13' },
-            { image: 'video14.jpg', link: 'video14.mp4', title: 'Video 14' },
-            { image: 'video15.jpg', link: 'video15.mp4', title: 'Video 15' },
+            { image: 'img/taniya nangi.png', link: 'taniya-nangi.html', title: 'Taniya nangige bathroom leak eka' }
             // Add more videos as needed
         ];
 
-        const adsterraAdLink = "https://your-adsterra-link.com"; // Replace with your actual Adsterra ad link
+        const adsterraAdLink = "https://www.profitableratecpm.com/em5hcz8g?key=8f19811e7c96cbf7814bea34b7bb4c3e"; // Replace with your actual Adsterra ad link
 
         // Function to show the popup ad
         function showPopupAd(videoOrPage) {
@@ -259,5 +245,18 @@
             loadVideos();
         });
     </script>
+        <script>
+    // Block right-click
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault(); // Disable right-click
+    });
+
+    // Block Ctrl+U (View Source)
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.key === 'u') {
+            e.preventDefault(); // Disable Ctrl + U
+        }
+    });
+</script>
 </body>
 </html>
