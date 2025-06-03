@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Streaming Site</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Logo */
+        header .logo img {
+            width: 150px;
+            margin: 20px 0;
+        }
+
+        /* Video Gallery */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .video-gallery .video-item {
+            text-align: center;
+        }
+
+        .video-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .video-title {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #FFD700; /* Yellow color for titles */
+        }
+
+        /* Popup Modal */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            z-index: 999;
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .popup-content h2 {
+            color: black;
+        }
+
+        .popup-content button {
+            background-color: #FFD700;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup-content button:hover {
+            background-color: #FFB600;
+        }
+
+        /* Pagination */
+        .pagination {
+            margin-top: 20px;
+        }
+
+        #nextPageBtn, #prevPageBtn {
+            background-color: #FFD700;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #nextPageBtn:hover, #prevPageBtn:hover {
+            background-color: #FFB600;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .video-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo"> <!-- Replace with your logo image -->
+        </div>
+    </header>
+
+    <main>
+        <div class="video-gallery">
+            <!-- Video Thumbnails will go here -->
+        </div>
+
+        <div class="pagination">
+            <button id="prevPageBtn" disabled>Previous</button>
+            <button id="nextPageBtn">Next Page</button>
+        </div>
+    </main>
+
+    <!-- Popup Modal for Ad -->
+    <div class="popup" id="popupAd">
+        <div class="popup-content">
+            <h2>Watch this short ad!</h2>
+            <p>Click the button below to continue to the video.</p>
+            <button id="redirectToAdBtn">Continue to Ad</button>
+        </div>
+    </div>
+
+    <script>
+        const videosPerPage = 10;
+        let currentPage = 1;
+        const videoGallery = document.querySelector('.video-gallery');
+        const nextPageBtn = document.getElementById('nextPageBtn');
+        const prevPageBtn = document.getElementById('prevPageBtn');
+        const popupAd = document.getElementById('popupAd');
+        const redirectToAdBtn = document.getElementById('redirectToAdBtn');
+
+        // Sample video data (image, video URL, and title)
+        const videoData = [
+            { image: 'video1.jpg', link: 'video1.mp4', title: 'Video 1' },
+            { image: 'video2.jpg', link: 'video2.mp4', title: 'Video 2' },
+            { image: 'video3.jpg', link: 'video3.mp4', title: 'Video 3' },
+            { image: 'video4.jpg', link: 'video4.mp4', title: 'Video 4' },
+            { image: 'video5.jpg', link: 'video5.mp4', title: 'Video 5' },
+            { image: 'video6.jpg', link: 'video6.mp4', title: 'Video 6' },
+            { image: 'video7.jpg', link: 'video7.mp4', title: 'Video 7' },
+            { image: 'video8.jpg', link: 'video8.mp4', title: 'Video 8' },
+            { image: 'video9.jpg', link: 'video9.mp4', title: 'Video 9' },
+            { image: 'video10.jpg', link: 'video10.mp4', title: 'Video 10' },
+            { image: 'video11.jpg', link: 'video11.mp4', title: 'Video 11' },
+            { image: 'video12.jpg', link: 'video12.mp4', title: 'Video 12' },
+            { image: 'video13.jpg', link: 'video13.mp4', title: 'Video 13' },
+            { image: 'video14.jpg', link: 'video14.mp4', title: 'Video 14' },
+            { image: 'video15.jpg', link: 'video15.mp4', title: 'Video 15' },
+            // Add more videos as needed
+        ];
+
+        const adsterraAdLink = "https://your-adsterra-link.com"; // Replace with your actual Adsterra ad link
+
+        // Function to show the popup ad
+        function showPopupAd(videoOrPage) {
+            popupAd.style.display = 'block'; // Show the popup
+            redirectToAdBtn.onclick = () => {
+                window.open(adsterraAdLink, '_blank'); // Open the ad link in a new tab
+                popupAd.style.display = 'none'; // Close the popup
+                // After closing the ad, redirect to the video or next page
+                setTimeout(() => {
+                    if (videoOrPage === 'nextPage') {
+                        loadVideos();  // Load next 10 videos
+                    } else {
+                        window.location.href = videoOrPage;  // Redirect to specific video page
+                    }
+                }, 500); // Short delay to simulate ad closing
+            };
+        }
+
+        // Function to load videos for the current page
+        function loadVideos() {
+            const start = (currentPage - 1) * videosPerPage;
+            const end = start + videosPerPage;
+            const videosToDisplay = videoData.slice(start, end);
+
+            videoGallery.innerHTML = ''; // Clear previous videos
+
+            videosToDisplay.forEach((video, index) => {
+                const videoItem = document.createElement('div');
+                videoItem.classList.add('video-item');
+
+                const videoElement = document.createElement('img');
+                videoElement.src = video.image;
+                videoElement.alt = video.title;
+                videoElement.addEventListener('click', () => {
+                    localStorage.setItem('lastVideoClicked', index);  // Store clicked video index
+                    showPopupAd(video.link);
+                });
+
+                const titleElement = document.createElement('div');
+                titleElement.classList.add('video-title');
+                titleElement.textContent = video.title;
+
+                videoItem.appendChild(videoElement);
+                videoItem.appendChild(titleElement);
+
+                videoGallery.appendChild(videoItem);
+            });
+
+            // Disable previous button on the first page
+            prevPageBtn.disabled = currentPage === 1;
+        }
+
+        // Load initial videos
+        loadVideos();
+
+        // Check if there was a specific video clicked and stored in localStorage
+        const lastClickedVideoIndex = localStorage.getItem('lastVideoClicked');
+        if (lastClickedVideoIndex) {
+            const video = videoData[lastClickedVideoIndex];
+            window.location.href = video.link;  // Redirect to that specific video page
+            localStorage.removeItem('lastVideoClicked');  // Clear the stored index
+        }
+
+        // Next Page Button Functionality
+        nextPageBtn.addEventListener('click', () => {
+            currentPage++;
+            loadVideos();
+        });
+
+        // Previous Page Button Functionality
+        prevPageBtn.addEventListener('click', () => {
+            currentPage--;
+            loadVideos();
+        });
+    </script>
+</body>
+</html>
