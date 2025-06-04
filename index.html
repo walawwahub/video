@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>walawwa |hub|</title>
+    <title>Video Streaming Site</title>
     <style>
         /* General Reset */
         * {
@@ -31,28 +31,34 @@
             grid-template-columns: repeat(5, 1fr);
             gap: 10px;
             padding: 20px;
+            margin: 0 auto;
         }
 
+        /* Video Item (Card) */
         .video-gallery .video-item {
             text-align: center;
+            background-color: #333;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .video-gallery .video-item:hover {
+            transform: scale(1.05);
         }
 
         .video-gallery img {
             width: 100%;
-            height: auto;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .video-gallery img:hover {
-            transform: scale(1.05);
+            height: 200px;
+            object-fit: cover; /* Ensure the images scale well within the card */
+            border-radius: 8px 8px 0 0;
         }
 
         .video-title {
             margin-top: 10px;
             font-size: 16px;
             color: #FFD700; /* Yellow color for titles */
+            padding: 10px;
         }
 
         /* Popup Modal */
@@ -165,7 +171,9 @@
 
         // Sample video data (image, video URL, and title)
         const videoData = [
-            { image: 'img/taniya nangi.png', link: 'taniya-nangi.html', title: 'Taniya nangige bathroom leak eka' }
+            { image: 'img/taniya nangi.png', link: 'taniya-nangi.html', title: 'Taniya nangige bathroom leak eka' },
+            { image: 'img/Nethmi akka.png', link: 'nethmi-akka.html', title: 'Nethmi Akkage video call fun' },
+            { image: 'img/kettu nangi.png', link: 'kettu-nangi.html', title: '11 wasare kettu nangi' }
             // Add more videos as needed
         ];
 
@@ -245,7 +253,8 @@
             loadVideos();
         });
     </script>
-        <script>
+
+    <script>
     // Block right-click
     document.addEventListener('contextmenu', function(e) {
         e.preventDefault(); // Disable right-click
