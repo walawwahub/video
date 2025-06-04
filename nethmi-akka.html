@@ -3,178 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ad Redirect Page</title>
+    <title>Walawwa |Hub|</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Container for the content */
-        .content-container {
-            margin-top: 50px;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 2rem;
-            color: #FFD700;
-            margin-bottom: 20px;
-        }
-
-        /* Instructions box */
-        .instructions {
-            font-size: 1.2rem;
-            color: #fff;
-            margin-top: 30px;
-            line-height: 1.8;
-            text-align: left;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            border: 1px solid #FFD700;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.7); /* Border shade */
-            margin-bottom: 30px;
-        }
-
-        /* Buttons */
-        button {
-            background-color: #FFD700;
-            color: black;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            margin: 10px;
-        }
-
-        button:hover {
-            background-color: #FFB600;
-        }
-
-        #watchNowBtn {
-            display: none; /* Hidden initially */
-            background-color: #28a745;
-            font-size: 20px;
-        }
-
-        /* Center the Watch Now button */
-        .center-btn {
+            background-color: #1a1a1a; /* Black background */
+            color: #fff; /* White text color */
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 50px;
+            height: 100vh;
+            margin: 0;
         }
 
-        /* Mobile responsiveness */
+        .container {
+            text-align: center;
+            background-color: #333; /* Dark background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #f2c040; /* Yellow */
+        }
+
+        /* Beautiful buttons with hover effects */
+        button {
+            background-color: #f2c040; /* Yellow */
+            color: black;
+            padding: 12px 25px;
+            font-size: 18px;
+            margin: 10px 0; /* Added margin for spacing between buttons */
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+            width: 100%; /* Make buttons full width on mobile */
+            max-width: 350px; /* Limit max-width on larger screens */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button:hover {
+            background-color: #e0a900; /* Darker yellow */
+            transform: scale(1.05); /* Slight zoom effect on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+        }
+
+        /* Styling the instruction box with a more beautiful border */
+        #instructionBox {
+            background-color: #262626;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: left;
+            color: #ddd;
+            border: 2px solid #f2c040; /* Golden yellow border */
+            background-image: linear-gradient(to bottom right, #333, #444); /* Subtle gradient */
+        }
+
+        #contentAccess {
+            background-color: #444; /* Darker background for content access */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #f2c040; /* Yellow */
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 100%; /* Make the link button full width on mobile */
+            max-width: 350px; /* Limit max-width on larger screens */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        a:hover {
+            background-color: #e0a900; /* Darker yellow */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 1.5rem;
+            .container {
+                width: 90%;
             }
 
-            .instructions {
-                font-size: 1rem;
-                padding: 15px;
+            button, a {
+                width: 100%;
+                padding: 12px;
+                font-size: 18px;
             }
 
-            button {
-                padding: 12px 20px;
+            #instructionBox {
                 font-size: 16px;
-            }
-
-            #watchNowBtn {
-                padding: 12px 20px;
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.2rem;
-            }
-
-            button {
-                padding: 10px 18px;
-                font-size: 14px;
-            }
-
-            #watchNowBtn {
-                padding: 10px 18px;
-                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="content-container">
-        <h1>Ad Viewing Instructions</h1>
+    <div class="container">
+        <h1>Unlock Video 🔓</h1>
         
-        <p class="instructions">
-            "AD 1" <strong>ක්ලික්</strong> කළ පසු එය වෙනත් අඩවියකට යනු ඇත.<br><br>
-            එම අඩවියේ තත්පර 10ක් පමණ රැඳී සිටින්න.<br><br>
-            පසුව (<strong>RETURN BACK</strong>) මෙම පිටුවට එන්න.<br><br>
-            මෙලෙස "Ad 2" නැවත <strong>ක්ලික්</strong> කරන්න.<br><br>
-            ඊට පසු, <strong>"Watch Now"</strong> ක්ලික් කරන්න.<br><br>
-            ඉන් පසු, වීඩියෝ <strong>BOT</strong> වෙතින් ලැබෙනු ඇත.
-        </p>
-
-        <div>
-            <button id="button1" onclick="openAd('https://www.profitableratecpm.com/f6u4uqfe?key=80c62e9c64ecc2839528be5946826746')">Click to Open Ad 1</button>
-            <button id="button2" onclick="openAd('https://www.profitableratecpm.com/em5hcz8g?key=8f19811e7c96cbf7814bea34b7bb4c3e')">Click to Open Ad 2</button>
+        <div id="instructionBox">
+            <h3>Instructions⚠️:</h3>
+            <p>බොස් පොඩි සීන් එකක් කරන්න තියෙන්නෙ, ඔයාට මුලින් ඔය පහළ තියන <strong>බට්න් දෙකම</strong> ක්ලික් කරන්න වෙනවා. එතකොට ඔයාව <strong>වෙන සයිට් එකකට</strong> යයි ඒකෙන් අයින් වෙලා <strong>ආපහු මේ සයිට් එකට එන්න</strong>. මේ විදිහට ඔයා හරියටම මේ බට්න් ක්ලික් කරලා වැඩේ කරාම වීඩියෝ එක <strong>Telegram එකෙන් බලන්න පුලුවන් ලින්ක් එක එනවා</strong></p>
         </div>
 
-        <div class="center-btn">
-            <button id="watchNowBtn" onclick="watchNow()">Watch Now</button>
+        <button id="visitWebsite1" onclick="visitWebsite(1)">Visit Website 1</button>
+        <button id="visitWebsite2" onclick="visitWebsite(2)">Visit Website 2</button>
+
+        <div id="contentAccess" style="display: none;">
+<a href="https://t.me/OnlyFanssz_bot?start=BQADAQADAgkAAqtzMEcGRKUxp43OpRYE" target="_blank">Go to video</a>
+            <h2>අඩෝ මරු බන් 🎉</h2>
+            <p>දැන් ඉතින් ආය ඇඩ් කතන්දර මුකුත් නෑ, කෙලින්ම මේකෙන් ගිහින් වීඩියෝ එක <strong>Telegram</strong> එකෙන් open කරගන්න</p>
+            
         </div>
     </div>
 
     <script>
-        let button1Clicked = false;
-        let button2Clicked = false;
+        let website1Visited = false;
+        let website2Visited = false;
 
-        // Function to open an ad link in a new window
-        function openAd(adUrl) {
-            window.open(adUrl, '_blank');  // Open the ad in a new tab/window
-
-            // Check which button was clicked and update the status
-            if (adUrl === 'https://www.profitableratecpm.com/f6u4uqfe?key=80c62e9c64ecc2839528be5946826746') {
-                button1Clicked = true;
-            } else if (adUrl === 'https://www.profitableratecpm.com/em5hcz8g?key=8f19811e7c96cbf7814bea34b7bb4c3e') {
-                button2Clicked = true;
+        function visitWebsite(websiteNumber) {
+            if (websiteNumber === 1) {
+                window.open('https://www.profitableratecpm.com/f6u4uqfe?key=80c62e9c64ecc2839528be5946826746', '_blank'); // Replace with actual URL
+                website1Visited = true;
+            } else if (websiteNumber === 2) {
+                window.open('https://www.profitableratecpm.com/em5hcz8g?key=8f19811e7c96cbf7814bea34b7bb4c3e', '_blank'); // Replace with actual URL
+                website2Visited = true;
             }
 
-            // If both buttons have been clicked, show the "Watch Now" button
-            if (button1Clicked && button2Clicked) {
-                document.getElementById("watchNowBtn").style.display = "block";
-            }
+            checkIfBothWebsitesVisited();
         }
 
-        // Function to handle the "Watch Now" button click
-        function watchNow() {
-            // alert("You can now proceed to watch the video!");
-            // Here you can redirect to the actual video page or content
-            window.location.href = "https://t.me/OnlyFanssz_bot?start=BQADAQADAgkAAqtzMEcGRKUxp43OpRYE";  // Replace with your video page URL
+        function checkIfBothWebsitesVisited() {
+            if (website1Visited && website2Visited) {
+                document.getElementById('contentAccess').style.display = 'block';
+            }
         }
     </script>
-    <script>
-    // Block right-click
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault(); // Disable right-click
-    });
-
-    // Block Ctrl+U (View Source)
-    document.addEventListener('keydown', function(e) {
-        if (e.ctrlKey && e.key === 'u') {
-            e.preventDefault(); // Disable Ctrl + U
-        }
-    });
-</script>
-
 </body>
 </html>
