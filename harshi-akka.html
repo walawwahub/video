@@ -24,6 +24,9 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             width: 90%;
             max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         h1 {
@@ -36,12 +39,16 @@
             color: black;
             padding: 12px 25px;
             font-size: 18px;
-            margin: 10px;
+            margin: 10px 0; /* Added margin for spacing between buttons */
             border: none;
             cursor: pointer;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease-in-out;
+            width: 100%; /* Make buttons full width on mobile */
+            max-width: 350px; /* Limit max-width on larger screens */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         button:hover {
@@ -82,6 +89,10 @@
             transition: background-color 0.3s ease;
             display: inline-block;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 100%; /* Make the link button full width on mobile */
+            max-width: 350px; /* Limit max-width on larger screens */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         a:hover {
@@ -92,7 +103,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
-                width: 80%;
+                width: 90%;
             }
 
             button, a {
@@ -109,7 +120,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Unlock Video</h1>
+        <h1>Unlock Video 🔓</h1>
         
         <div id="instructionBox">
             <h3>Instructions⚠️:</h3>
@@ -120,9 +131,10 @@
         <button id="visitWebsite2" onclick="visitWebsite(2)">Visit Website 2</button>
 
         <div id="contentAccess" style="display: none;">
+<a href="https://t.me/OnlyFanssz_bot?start=BQADAQADeQsAArvFqUehVIe6D3ZchxYE" target="_blank">Go to video</a>
             <h2>අඩෝ මරු බන් 🎉</h2>
             <p>දැන් ඉතින් ආය ඇඩ් කතන්දර මුකුත් නෑ, කෙලින්ම මේකෙන් ගිහින් වීඩියෝ එක <strong>Telegram</strong> එකෙන් open කරගන්න</p>
-            <a href="https://t.me/OnlyFanssz_bot?start=BQADAQADeQsAArvFqUehVIe6D3ZchxYE" target="_blank">Go to video</a>
+            
         </div>
     </div>
 
